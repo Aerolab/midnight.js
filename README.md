@@ -1,7 +1,8 @@
 ## Midnight
 
-Switches dynamically between multiple header designs, so it looks in line with the content below it.
+A jQuery plugin that switches between multiple header designs as you scroll, so you always have a header that looks great with the content below it.
 
+**[Check out the demo](http://aerolab.github.io/midnight.js/)** (watch the logo as you scroll).
 
 ## Quick start
 
@@ -114,3 +115,9 @@ $('nav').midnight({
   defaultClass: 'default'
 });
 ```
+
+## Known Issues
+
+On iOS <7 and older Android devices scrollTop isn't updated fluently, which creates a choppy effect. It can be fixed somewhat by wrapping the body in container and detecting touch events, but we're leaving that as an open issue. We'll probably disable the effect on older mobile devices due to bad performance.
+
+You shouldn't add any sort of padding, margin or offset (top/left/right/bottom) to the nav, since it causes issues with rendering.
