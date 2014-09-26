@@ -475,7 +475,33 @@ pre.line-numbers > code {
     }
 
 
-@media(max-width: 860px) {
+@media(max-width: 1680px) {
+  header {
+    min-height: 0px;
+  }
+  .first-background {
+    height: 250px;
+  }
+  nav.fixed {
+    height: 250px;
+  }
+    .logo-holder {
+      padding-top: 247px;
+    }
+    
+  .logo-holder {
+    height: 56.25px;
+  }
+  .logo {
+    width: 600px;
+    height: 112.5px;
+    margin-top: -56.25px;
+    background-size: 600px 788px;
+  }
+}
+
+
+@media(max-width: 1280px) {
   header {
     min-height: 0px;
   }
@@ -488,16 +514,10 @@ pre.line-numbers > code {
     .logo-holder {
       padding-top: 197px;
     }
+}
 
-  .logo-holder {
-    height: 56.25px;
-  }
-  .logo {
-    width: 600px;
-    height: 112.5px;
-    margin-top: -56.25px;
-    background-size: 600px 788px;
-  }
+@media(max-width: 860px) {
+
 }
 
 
