@@ -107,14 +107,13 @@ nav.fixed {
   right: 0;
   text-align: center;
   z-index: 9999;
-  height: 200px;
-  height: 30vh;
+  height: 300px;
   pointer-events: none;
 }
   .logo-holder {
     margin: 60px auto 0px auto;
     height: 75px;
-    padding-top: 29.5vh;
+    padding-top: 295px;
   }
   .logo {
     display: block;
@@ -159,7 +158,7 @@ header, section, footer {
   background: url(images/background-top.jpg) no-repeat 50% 50%;
   background-color: #151D28;
   background-size: cover;
-  height: 30vh;
+  height: 300px;
 }
 .step-one {
   background: url(images/background-1.png) no-repeat 50% 50%;
@@ -209,7 +208,7 @@ header {
   padding: 100px 0 0 0;
   background: #ffffff;
   text-align: center;
-  min-height: 67vh;
+  min-height: 700px;
 }
   header .buttons {
     margin-bottom: 40px;
@@ -477,6 +476,19 @@ pre.line-numbers > code {
 
 
 @media(max-width: 860px) {
+  header {
+    min-height: 0px;
+  }
+  .first-background {
+    height: 200px;
+  }
+  nav.fixed {
+    height: 200px;
+  }
+    .logo-holder {
+      padding-top: 197px;
+    }
+
   .logo-holder {
     height: 56.25px;
   }
@@ -547,19 +559,19 @@ pre.line-numbers > code {
   }
 }
 
+
 @media(max-width: 480px) {
   .top-links .button-github {
     display: none;
   }
   .first-background {
-    height: 20vh;
+    height: 120px;
   }
   nav.fixed {
-    height: 100px;
-    height: 20vh;
+    height: 120px;
   }
     .logo-holder {
-      padding-top: 20vh;
+      padding-top: 118px;
     }
 
   .logo-holder {
@@ -576,16 +588,6 @@ pre.line-numbers > code {
 }
 
 @media(max-width: 320px) {
-  .first-background {
-    height: 20vh;
-  }
-  nav.fixed {
-    height: 100px;
-    height: 20vh;
-  }
-    .logo-holder {
-      padding-top: 20vh;
-    }
 
   .logo-holder {
     height: 22.5px;

@@ -242,13 +242,25 @@ $(document).ready(function(){
   <script src="assets/js/sscr.min.js"></script>
   <script src="assets/js/prism.js"></script>
   <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/viewport-units-buggyfill.js"></script>
   <script src="midnight.jquery.js"></script>
   <script>
-    // Start wow.js
-    new WOW().init();
-    // Start Midnight!
+
+
+
     $(document).ready(function(){
+      // vh fix for iOS7 (Not that it works well on that anyway)
+      viewportUnitsBuggyfill.init();
+
+      $(window).resize(function(){
+        viewportUnitsBuggyfill.refresh();
+      });
+
+      // Start Midnight!
       $('nav.fixed').midnight();
+
+      // Start wow.js
+      new WOW().init();
 
       // The island disappears when the logo moves on top of it
       var $island = $('#space-island');
@@ -258,7 +270,7 @@ $(document).ready(function(){
       $(window).resize(function(){
         islandTop = $island.offset().top;
         windowHeight = $(window).height();
-      }).trigger('resize');
+      });
 
       $(document).scroll(function(){
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -284,6 +296,16 @@ $(document).ready(function(){
         }
 
       });
+
+      $('.scroll-prompt').click(function(event){
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: $("section.step-one").offset().top - $('nav').height() * 0.5
+        }, 1000, 'swing');
+      });
+
+      $(window).trigger('resize');
+
     });
   </script>
 
