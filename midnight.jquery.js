@@ -1,7 +1,7 @@
 /**
- * midnight.js
- * Switches dynamically between multiple header designs, so it looks in line with the content below it.
- * Crafted at Aerolab
+ * midnight.js v1.0.0
+ * jQuery plugin to switch dynamically between multiple header designs, so it looks in line with the content below it.
+ * (c)2014 Aerolab, @license WTFPL
  */
 
 
