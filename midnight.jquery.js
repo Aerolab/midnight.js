@@ -139,11 +139,13 @@
 
         // Create the fake headers
         $originalHeader
-          .css('position', 'fixed')
-          .css('top', '0')
-          .css('left', '0')
-          .css('right', '0')
-          .css('overflow', 'hidden');
+          .css({
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            overflow: 'hidden'
+          });
 
         updateHeaderHeight();
 
