@@ -115,10 +115,10 @@
         headers['default'] = {};
 
         $sections.each(function(){
-          if( typeof $(this).data('midnight') !== 'string' ) { return; }
+          var headerClass = $section.data('midnight');
 
-          var headerClass = $(this).data('midnight');
           if( typeof headerClass !== 'string' ){ return; }
+
           headerClass = headerClass.trim();
 
           if( headerClass === '' ){ return; }
