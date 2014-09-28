@@ -115,6 +115,7 @@
         headers['default'] = {};
 
         $sections.each(function(){
+          var $section = $(this);
           var headerClass = $section.data('midnight');
 
           if( typeof headerClass !== 'string' ){ return; }
