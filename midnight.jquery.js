@@ -248,9 +248,7 @@
 
       // NANANANANANANANA GRASAAAAA
       // (This is the ghetto way of keeping the section values updated after any kind of reflow. The overhead is minimal)
-      setInterval(function(){
-        recalculateSections();
-      }, 1000);
+      setInterval(recalculateSections, 1000);
 
 
       var recalculateHeaders = function(){
