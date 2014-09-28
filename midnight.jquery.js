@@ -383,7 +383,7 @@
       // This works using requestAnimationFrame for better compatibility with iOS/Android
       requestAnimationFrame = window.requestAnimationFrame || (function(){
         return  window.requestAnimationFrame ||
-                window.webkitRequestAnimationFrame  //Safari6.x, Chrome23, BlackBerry10
+                window.webkitRequestAnimationFrame  || //Safari6.x, Chrome23, BlackBerry10
                 function( callback ){
                   window.setTimeout(callback, 1000 / 60);
                 };
