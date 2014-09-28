@@ -57,7 +57,7 @@
 
       var getSupportedTransform = function() {
         var prefixes = 'transform WebkitTransform MozTransform OTransform msTransform'.split(' ');
-        for(var i = 0; i < prefixes.length; i++) {
+        for(var i = 0, l = prefixes.length; i < l; i++) {
           if(document.createElement('div').style[prefixes[i]] !== undefined) {
             return prefixes[i];
           }
@@ -232,7 +232,7 @@
         // Cache all the sections and their start/end positions (where the class starts and ends)
         sections = [];
 
-        for( i=0; i<$sections.length; i++ ) {
+        for( var i = 0, l = $sections.length; i < l; i++ ) {
           var $section = $($sections[i]);
 
           sections.push({
