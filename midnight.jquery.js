@@ -139,11 +139,13 @@
 
         // Create the fake headers
         $originalHeader
-          .css('position', 'fixed')
-          .css('top', '0')
-          .css('left', '0')
-          .css('right', '0')
-          .css('overflow', 'hidden');
+          .css({
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            overflow: 'hidden'
+          });
 
         updateHeaderHeight();
 
@@ -176,10 +178,15 @@
               headers[headerClass].element = $defaultHeader.clone(true, true).removeClass( settings['defaultClass'] ).addClass(headerClass).appendTo( $originalHeader );
             }
 
-            headers[headerClass].element
-              .css('position', 'absolute')
-              .css('overflow', 'hidden')
-              .css('top', '0').css('left', '0').css('right', '0').css('bottom', '0');
+            var resetStyles = {
+              position: 'absolute',
+              overflow: 'hidden',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0
+            };
+            headers[headerClass].element.css(resetStyles);
 
             if( transformMode !== false ) {
               headers[headerClass].element.css(transformMode, 'translateZ(0)');
@@ -190,10 +197,7 @@
               headers[headerClass].element.wrapInner('<div class="'+ settings['innerClass'] +'"></div>');
             }
             headers[headerClass].inner = headers[headerClass].element.find('> .'+ settings['innerClass'])
-            headers[headerClass].inner
-              .css('position', 'absolute')
-              .css('overflow', 'hidden')
-              .css('top', '0').css('left', '0').css('right', '0').css('bottom', '0');
+            headers[headerClass].inner.css(resetStyles);
 
             if( transformMode !== false ) {
               headers[headerClass].inner.css(transformMode, 'translateZ(0)');
