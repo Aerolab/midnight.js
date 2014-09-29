@@ -2,9 +2,9 @@
  * Midnight.js v1.0.1
  * jQuery plugin to switch between multiple fixed header designs on the fly, so it looks in line with the content below it.
  * http://aerolab.github.io/midnight.js/
- * 
+ *
  * Copyright (c) 2014 Aerolab <info@aerolab.co>
- * 
+ *
  * Released under the MIT license
  * http://aerolab.github.io/midnight.js/LICENSE.txt
  */
@@ -56,7 +56,7 @@
       var sections = [];
 
       var getSupportedTransform = function() {
-        var prefixes = 'transform WebkitTransform MozTransform OTransform msTransform'.split(' ');
+        var prefixes = 'transform WebkitTransform msTransform'.split(' ');  // Chrome<=35, Safari<=8+, Opera<=22, Blackberry10+, IE9 only
         for(var i = 0; i < prefixes.length; i++) {
           if(document.createElement('div').style[prefixes[i]] !== undefined) {
             return prefixes[i];
@@ -386,8 +386,7 @@
       // This works using requestAnimationFrame for better compatibility with iOS/Android
       requestAnimationFrame = window.requestAnimationFrame || (function(){
         return  window.requestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
+                window.webkitRequestAnimationFrame  || //Safari6.x, Chrome23, BlackBerry10
                 function( callback ){
                   window.setTimeout(callback, 1000 / 60);
                 };
