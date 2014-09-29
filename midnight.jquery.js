@@ -1,5 +1,5 @@
 /*!
- * Midnight.js v1.0.0
+ * Midnight.js v1.0.1
  * jQuery plugin to switch between multiple fixed header designs on the fly, so it looks in line with the content below it.
  * http://aerolab.github.io/midnight.js/
  * 
