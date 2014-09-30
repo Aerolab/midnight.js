@@ -1,14 +1,4 @@
-/*!
- * Midnight.js 1.0.2
- * jQuery plugin to switch between multiple fixed header designs on the fly, so it looks in line with the content below it.
- * http://aerolab.github.io/midnight.js/
- *
- * Copyright (c) 2014 Aerolab <info@aerolab.co>
- *
- * Released under the MIT license
- * http://aerolab.github.io/midnight.js/LICENSE.txt
- */
- ((function ( $ ) {
+((function ( $ ) {
 
   $.fn.midnight = function( customOptions ) {
 

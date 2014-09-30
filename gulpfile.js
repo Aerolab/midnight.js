@@ -12,6 +12,13 @@ var getCopyright = function () {
     return fs.readFileSync('Copyright');
 };
 
+gulp.task('buildfromsrc', function () {
+    gulp.src('./midnight.jquery.src.js')
+    .pipe(header(getCopyright(), {version: getVersion()}))
+    .pipe(concat('midnight.jquery.js'))
+    .pipe(gulp.dest(''));
+});
+
 // task
 gulp.task('minifyjs', function () {
     gulp.src('./midnight.jquery.js')
@@ -21,4 +28,4 @@ gulp.task('minifyjs', function () {
     .pipe(gulp.dest(''));
 });
 
-gulp.task('default', ['minifyjs']);
+gulp.task('default', ['buildfromsrc', 'minifyjs']);
