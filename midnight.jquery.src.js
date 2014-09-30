@@ -27,6 +27,7 @@
 
       // Scroll Cache
       var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var documentHeight = $(document).height();
 
       // Cache all the switchable headers (different colors)
       var $originalHeader = $(this);
@@ -222,6 +223,8 @@
 
       var recalculateSections = function(){
 
+        documentHeight = $(document).height();
+
         // Cache all the sections and their start/end positions (where the class starts and ends)
         sections = [];
 
@@ -248,6 +251,9 @@
 
         // Check classes are currently active in the header (including the current percentage of each)
         scrollTop = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
+        // Some browsers (e.g on OS X) allow scrolling past the top/bottom.
+        scrollTop = Math.max(scrollTop, 0);
+        scrollTop = Math.min(scrollTop, documentHeight);
 
         // Get the header's position relative to the document (given that it's fixed)
         var headerHeight = headerInfo.height;
