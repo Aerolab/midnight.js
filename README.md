@@ -116,6 +116,20 @@ $('nav').midnight({
 });
 ```
 
+## CDN Hosting
+
+To lower hosting costs & have users load midnight.js faster, you can use the [jsDelivr CDN](http://www.jsdelivr.com/#!jquery.midnight) like so:
+```htm
+<script src="//cdn.jsdelivr.net/jquery.midnight/{version}/midnight.jquery.min.js"></script>
+```
+
+### Advanced
+
+You can use jsDelivr's [version aliasing & concocting](https://github.com/jsdelivr/jsdelivr#version-aliasing) to serve the latest minor branch version along with dependancies.  For example, to download the latest patch versions of midnight.js v1.0.z together along with jQuery v1.11.z:
+```htm
+<script src="//cdn.jsdelivr.net/g/jquery@1.11,jquery.midnight@1.0"></script>
+```
+
 ## Known Issues
 
 On iOS <7 and older Android devices scrollTop isn't updated fluently, which creates a choppy effect. It can be fixed somewhat by wrapping the body in container and detecting touch events, but we're leaving that as an open issue. We'll probably disable the effect on older mobile devices due to bad performance.
