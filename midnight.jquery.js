@@ -8,7 +8,7 @@
  * Released under the MIT license
  * http://aerolab.github.io/midnight.js/LICENSE.txt
  */
- ((function ( $ ) {
+ (function( $ ) {
 
   $.fn.midnight = function( customOptions ) {
 
@@ -413,4 +413,4 @@
 
   };
 
-})(jQuery));
+}(jQuery));
