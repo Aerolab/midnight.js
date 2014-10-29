@@ -235,7 +235,7 @@
 
           sections.push({
             element: $section,
-            class: $section.data('midnight'),
+            className: $section.data('midnight'),
             start: $section.offset().top,
             end: $section.offset().top + $section.outerHeight()
           });
@@ -278,27 +278,27 @@
           // If there's some kind of overlap between the header and a section, that class becomes active
           if( headerEnd >= sections[ix].start && headerStart <= sections[ix].end ) {
 
-            headers[ sections[ix].class ].visible = true;
+            headers[ sections[ix].className ].visible = true;
 
             // If the header sits neatly within the section, this is the only active class
             if( headerStart >= sections[ix].start && headerEnd <= sections[ix].end ) {
-              headers[ sections[ix].class ].from = 'top';
-              headers[ sections[ix].class ].progress += 1.0;
+              headers[ sections[ix].className ].from = 'top';
+              headers[ sections[ix].className ].progress += 1.0;
             }
             // If the header is in the middle of the end of a section, it comes from the top
             else if( headerEnd > sections[ix].end && headerStart < sections[ix].end ) {
-              headers[ sections[ix].class ].from = 'top';
-              headers[ sections[ix].class ].progress = 1.0 - (headerEnd - sections[ix].end) / headerHeight;
+              headers[ sections[ix].className ].from = 'top';
+              headers[ sections[ix].className ].progress = 1.0 - (headerEnd - sections[ix].end) / headerHeight;
             }
             // If the header is in the middle of the start of a section, it comes from the bottom
             else if( headerEnd > sections[ix].start && headerStart < sections[ix].start ) {
               // If the same color continues in the next section, just add the progress to it so we don't switch
-              if( headers[ sections[ix].class ].from === 'top' ) {
-                headers[ sections[ix].class ].progress += (headerEnd - sections[ix].start) / headerHeight;
+              if( headers[ sections[ix].className ].from === 'top' ) {
+                headers[ sections[ix].className ].progress += (headerEnd - sections[ix].start) / headerHeight;
               }
               else {
-                headers[ sections[ix].class ].from = 'bottom';
-                headers[ sections[ix].class ].progress = (headerEnd - sections[ix].start) / headerHeight;
+                headers[ sections[ix].className ].from = 'bottom';
+                headers[ sections[ix].className ].progress = (headerEnd - sections[ix].start) / headerHeight;
               }
             }
 
