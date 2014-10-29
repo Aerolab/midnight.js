@@ -10,6 +10,8 @@
  */
  ((function ( $ ) {
 
+  "use strict";
+
   $.fn.midnight = function( customOptions ) {
 
     if( typeof customOptions !== "object" ) {
@@ -26,10 +28,8 @@
         innerClass: 'midnightInner',
         // The class used by the default header (useful when adding multiple headers with different markup).
         defaultClass: 'default',
-        /*
-        // Add a prefix to the header classes (so if you set the "thingy-" prefix, a section with data-midnight="butterfly" will use the "thingy-butterfly" header)
+        // Unused: Add a prefix to the header classes (so if you set the "thingy-" prefix, a section with data-midnight="butterfly" will use the "thingy-butterfly" header)
         classPrefix: ''
-        */
       };
 
       $.extend(settings, customOptions);
@@ -55,10 +55,10 @@
       var sections = [];
 
       var getSupportedTransform = function() {
-        var prefixes = 'transform WebkitTransform MozTransform OTransform msTransform'.split(' ');
-        for(var i = 0; i < prefixes.length; i++) {
-          if(document.createElement('div').style[prefixes[i]] !== undefined) {
-            return prefixes[i];
+        var prefixes = ['transform','WebkitTransform','MozTransform','OTransform','msTransform'];
+        for(var ix = 0; ix < prefixes.length; ix++) {
+          if(document.createElement('div').style[prefixes[ix]] !== undefined) {
+            return prefixes[ix];
           }
         }
         return false;
@@ -166,7 +166,8 @@
 
 
 
-        for( headerClass in headers ) {
+        for( var headerClass in headers ) {
+          if( ! headers.hasOwnProperty(headerClass) ){ continue; }
           if( typeof headers[headerClass].element === 'undefined' ) {
 
             // Create the outer clipping mask
@@ -214,7 +215,8 @@
         $customHeaders.each(function(){
           var $header = $(this);
           var hasAnyClass = false;
-          for( headerClass in headers ) {
+          for( var headerClass in headers ) {
+            if( ! headers.hasOwnProperty(headerClass) ){ continue; }
             if( $header.hasClass(headerClass) ){ hasAnyClass = true; }
           }
 
@@ -238,8 +240,8 @@
         // Cache all the sections and their start/end positions (where the class starts and ends)
         sections = [];
 
-        for( i=0; i<$sections.length; i++ ) {
-          var $section = $($sections[i]);
+        for( var ix=0; ix<$sections.length; ix++ ) {
+          var $section = $($sections[ix]);
 
           sections.push({
             element: $section,
@@ -271,14 +273,15 @@
         var headerEnd = scrollTop + headerInfo.top + headerHeight;
 
         // Reset the header status
-        for( ix in headers ) {
+        for( var headerClass in headers ) {
+          if( ! headers.hasOwnProperty(headerClass) ){ continue; }
           // from == '' signals that the section is inactive
-          headers[ ix ].from = '';
-          headers[ ix ].progress = 0.0;
+          headers[ headerClass ].from = '';
+          headers[ headerClass ].progress = 0.0;
         }
 
         // Set the header status
-        for( ix in sections ) {
+        for( var ix = 0; ix < sections.length; ix++ ) {
 
           // Todo: This isn't exactly the best code.
 
@@ -325,10 +328,11 @@
         // Do some preprocessing to ensure a header is always shown (even if some sections haven't been assigned)
         var totalProgress = 0.0;
         var lastActiveClass = '';
-        for( ix in headers ) {
-          if( ! headers[ix].from === '' ){ continue; }
-          totalProgress += headers[ix].progress;
-          lastActiveClass = ix;
+        for( var headerClass in headers ) {
+          if( ! headers.hasOwnProperty(headerClass) ){ continue; }
+          if( ! headers[headerClass].from === '' ){ continue; }
+          totalProgress += headers[headerClass].progress;
+          lastActiveClass = headerClass;
         }
 
 
@@ -344,8 +348,8 @@
         }
 
 
-        for( ix in headers ) {
-
+        for( var ix in headers ) {
+          if( ! headers.hasOwnProperty(ix) ){ continue; }
           if( ! headers[ix].from === '' ){ continue; }
 
           var offset = (1.0 - headers[ix].progress) * 100.0;
@@ -388,7 +392,7 @@
 
 
       // This works using requestAnimationFrame for better compatibility with iOS/Android
-      requestAnimationFrame = window.requestAnimationFrame || (function(){
+      var requestAnimationFrame = window.requestAnimationFrame || (function(){
         return  window.requestAnimationFrame ||
                 window.webkitRequestAnimationFrame ||
                 window.mozRequestAnimationFrame ||
