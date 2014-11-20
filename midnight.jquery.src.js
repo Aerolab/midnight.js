@@ -56,7 +56,7 @@
     },
 
     _create: function() {
-
+      
       var context = this;
       this._scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       this._documentHeight = $(document).height();
@@ -150,7 +150,7 @@
 
       // Get all the different header colors
       var context = this;
-      this._headers['default'] = {};
+      this._headers[this.options['defaultClass']] = {};
 
       this._$sections.each(function(){
         var $section = $(this);
