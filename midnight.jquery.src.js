@@ -46,9 +46,6 @@
       this._$sections = $('[data-midnight]');
       this._sections = [];
 
-      // We need at least one section for this to work.
-      if( this._$sections.length == 0 ){ return; }
-
       this._setupHeaders();
 
       this.recalculate();
@@ -196,6 +193,7 @@
         }
       } else {
         // If there are no custom headers, just wrap the content and make that the default header
+
         this.element.wrapInner('<div class="'+ this.options['headerClass'] +' '+ this.options['defaultClass'] +'"></div>');
       }
 
@@ -339,6 +337,9 @@
      */
     _updateHeaders: function(){
 
+      // Don't do anything if there are no headers
+      if( typeof this._headers[ this.options['defaultClass'] ] === 'undefined' ){ return; }
+
       // Do some preprocessing to ensure a header is always shown (even if some this._sections haven't been assigned)
       var totalProgress = 0.0;
       var lastActiveClass = '';
@@ -348,7 +349,6 @@
         totalProgress += this._headers[headerClass].progress;
         lastActiveClass = headerClass;
       }
-
 
       if( totalProgress < 1.0 ) {
         // Complete the header at the bottom with the default class
@@ -423,18 +423,8 @@
     },
 
     _updateHeadersLoop: function(){
-      // This works using requestAnimationFrame for better compatibility with iOS/Android
-      /*
-      this._requestAnimationFrame = (this._requestAnimationFrame || (function(){
-        return  window.requestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                function( callback ){
-                  window.setTimeout(callback, 1000 / 60);
-                };
-      })());
-*/
 
+      // This works using requestAnimationFrame for better compatibility with iOS/Android
       var context = this;
       this._requestAnimationFrame(function(){
         context._updateHeadersLoop();
@@ -442,10 +432,21 @@
 
       this._recalculateHeaders();
       this._updateHeaders();
+
     },
 
     _requestAnimationFrame: function(callback){
-      window.requestAnimationFrame(callback);
+      // Todo: This should be moved somewhere else
+      var requestAnimationFrame = (requestAnimationFrame || (function(){
+        return  window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                function( callback ){
+                  window.setTimeout(callback, 1000 / 60);
+                };
+      })());
+
+      requestAnimationFrame(callback);
     }
 
 
