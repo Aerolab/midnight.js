@@ -1,6 +1,6 @@
 {
   "name": "Midnight.JS",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A jQuery plugin to switch fixed headers on the fly",
   "devDependencies": {
     "gulp": "^3.8.8",
