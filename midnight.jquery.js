@@ -293,7 +293,28 @@
       // Get the header's position relative to the document (given that it's fixed)
       var headerHeight = this._headerInfo.height;
       var headerStart = this._scrollTop + this._headerInfo.top;
-      var headerEnd = this._scrollTop + this._headerInfo.top + headerHeight;
+      var headerEnd = headerStart + headerHeight;
+
+      // Add support for transforms (for plugins like Headroom or general css stuff)
+      if( typeof window.getComputedStyle === 'function' ) {
+        var style = window.getComputedStyle(this.element[0], null);
+        var top = 0.0;
+        var transformY = 0.0;
+
+        if( this._transformMode !== false && typeof style.transform === 'string' ) {
+          // Convert the transform matrix to an array
+          var transformArray = (style.transform).match(/(-?[0-9\.]+)/g);
+          if( transformArray.length >= 6 && ! isNaN(parseFloat(transformArray[5])) ) {
+            transformY = parseFloat(transformArray[5]);
+          }
+        }
+        if( (style.top).indexOf('px') >= 0 && ! isNaN(parseFloat(style.top)) ) {
+          top = parseFloat(style.top);
+        }
+
+        headerStart += top + transformY;
+        headerEnd += top + transformY;
+      }
 
       // Reset the header status
       for( var headerClass in this._headers ) {
@@ -377,6 +398,10 @@
         if( ! this._headers[ix].from === '' ){ continue; }
 
         var offset = (1.0 - this._headers[ix].progress) * 100.0;
+
+        // Add an extra offset when an area is hidden to prevent clipping/rounding issues.
+        if( offset >= 100.0 ) { offset = 110.0; }
+        if( offset <= -100.0 ) { offset = -110.0; }
 
         if( this._headers[ix].from === 'top' ){
           if( this._transformMode !== false ) {
