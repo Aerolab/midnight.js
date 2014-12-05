@@ -8,7 +8,7 @@
  * Released under the MIT license
  * http://aerolab.github.io/midnight.js/LICENSE.txt
  */
- ((function ( $ ) {
+ (function( $ ) {
 
   "use strict";
 
@@ -417,4 +417,4 @@
 
   };
 
-})(jQuery));
+}(jQuery));
