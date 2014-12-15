@@ -294,7 +294,7 @@
         if( this._transformMode !== false && typeof style.transform === 'string' ) {
           // Convert the transform matrix to an array
           var transformArray = (style.transform).match(/(-?[0-9\.]+)/g);
-          if( transformArray.length >= 6 && ! isNaN(parseFloat(transformArray[5])) ) {
+          if( transformArray !== null &&  transformArray.length >= 6 && ! isNaN(parseFloat(transformArray[5])) ) {
             transformY = parseFloat(transformArray[5]);
           }
         }
