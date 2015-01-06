@@ -272,7 +272,11 @@
           $header.wrapInner('<div class="'+ context.options['innerClass'] +'"></div>');
         }
 
-        if( ! hasAnyClass ){ $header.hide(); }
+        if( hasAnyClass ) {
+          $header.show();
+        } else {
+          $header.hide(); 
+        }
       });
 
     },
