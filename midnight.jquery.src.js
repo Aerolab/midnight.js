@@ -125,7 +125,9 @@
           // Disable the fixed height and trigger a reflow to get the proper height
           // Get the inner height or just the height of the container
           if( $inner.length ) {
-            $inner.css('bottom', 'auto');
+            // Overflow: Auto fixes an issue with Chrome 41, where outerHeight() no longer takes into account 
+            // the margins of internal elements, creating a smaller container than necessary
+            $inner.css('bottom', 'auto').css('overflow', 'auto');
             height = $inner.outerHeight();
             $inner.css('bottom', '0');
           } else {
