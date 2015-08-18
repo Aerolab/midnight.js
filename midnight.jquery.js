@@ -25,7 +25,9 @@
       // The class used by the default header (useful when adding multiple headers with different markup).
       defaultClass: 'default',
       // Unused: Add a prefix to the header classes (so if you set the "thingy-" prefix, a section with data-midnight="butterfly" will use the "thingy-butterfly" header)
-      classPrefix: ''
+      classPrefix: '',
+      // If you want to use plugin more than once and if you want own data attribute name (so if you set the "header" in a section use data-header)
+      dataAttr: 'midnight'
     },
 
     // Cache all the switchable headers (different colors)
@@ -53,7 +55,7 @@
       };
 
       // Sections that affect the color of the header (and cache)
-      this._$sections = $('[data-midnight]');
+      this._$sections = $('[data-'+this.options.dataAttr+']');
       this._sections = [];
 
       this._setupHeaders();
