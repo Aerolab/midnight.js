@@ -72,10 +72,14 @@
       }, 1000);
 
 
-      // We need to recalculate all this._sections and headers on resize.
+      // We need to recalculate all this._sections and headers
+      context.recalculate();
+
+
+      // and at every resize
       $(window).resize(function(){
         context.recalculate();
-      }).trigger('resize');
+      });
 
 
       // Start the RequestAnimationFrame loop. This should be done just once.
