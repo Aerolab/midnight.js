@@ -1,7 +1,7 @@
 {
   "name": "midnight",
   "description": "Switch fixed headers on the fly",
-  "main": "dist/midnight.jquery.min.js",
+  "main": "midnight.jquery.min.js",
   "dependencies": {
     "jquery": "~1.11.3"
   },
