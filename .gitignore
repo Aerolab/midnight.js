@@ -7,3 +7,4 @@ components
 coverage
 *.orig
 .idea
+bower_components/

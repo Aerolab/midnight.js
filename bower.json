@@ -1,7 +1,10 @@
 {
   "name": "midnight",
   "description": "Switch fixed headers on the fly",
-  "main": "midnight.jquery.js",
+  "main": "dist/midnight.jquery.min.js",
+  "dependencies": {
+    "jquery": "~1.11.3"
+  },
   "homepage": "https://github.com/Aerolab/midnight.js",
   "license": "MIT",
   "authors": [
