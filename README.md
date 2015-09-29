@@ -4,6 +4,7 @@ A jQuery plugin that switches between multiple header designs as you scroll, so 
 
 **[Check out the demo](http://aerolab.github.io/midnight.js/)** (watch the logo as you scroll).
 
+
 ## Quick start
 
 Create your fixed nav (or header) as you typically would. For an example, something like this (you can use whatever markup suits you)
@@ -116,6 +117,18 @@ $('nav').midnight({
 });
 ```
 
+
+## Installation
+
+Midnight is available on Bower and NPM as **midnight.js**:
+
+```
+bower install midnight.js
+
+npm install midnight.js
+```
+
+
 ## CDN Hosting
 
 To lower hosting costs & have users load midnight.js faster, you can use the [jsDelivr CDN](http://www.jsdelivr.com/#!jquery.midnight) like so:
@@ -123,12 +136,14 @@ To lower hosting costs & have users load midnight.js faster, you can use the [js
 <script src="//cdn.jsdelivr.net/jquery.midnight/{version}/midnight.jquery.min.js"></script>
 ```
 
+
 ### Advanced
 
 You can use jsDelivr's [version aliasing & concocting](https://github.com/jsdelivr/jsdelivr#version-aliasing) to serve the latest minor branch version along with dependancies.  For example, to download the latest patch versions of midnight.js v1.0.z together along with jQuery v1.11.z:
 ```htm
 <script src="//cdn.jsdelivr.net/g/jquery@1.11,jquery.midnight@1.0"></script>
 ```
+
 
 ## Known Issues
 
