@@ -53,7 +53,7 @@
       };
 
       // Sections that affect the color of the header (and cache)
-      this._$sections = $('[data-midnight]');
+      this._$sections = $('[data-midnight]:not(:hidden)');
       this._sections = [];
 
       this._setupHeaders();
