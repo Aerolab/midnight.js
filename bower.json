@@ -1,6 +1,7 @@
 {
   "name": "midnight",
   "description": "Switch fixed headers on the fly",
+  "version": "1.1.2",
   "main": "midnight.jquery.js",
   "dependencies": {
     "jquery": "^1.11.3"
