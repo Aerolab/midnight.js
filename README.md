@@ -4,6 +4,15 @@ A jQuery plugin that switches between multiple header designs as you scroll, so 
 
 **[Check out the demo](http://aerolab.github.io/midnight.js/)** (watch the logo as you scroll).
 
+## Installation
+
+Midnight is available on Bower and NPM as **midnight.js**:
+
+```
+bower install midnight.js
+
+npm install midnight.js
+```
 
 ## Quick start
 
@@ -116,18 +125,6 @@ $('nav').midnight({
   defaultClass: 'default'
 });
 ```
-
-
-## Installation
-
-Midnight is available on Bower and NPM as **midnight.js**:
-
-```
-bower install midnight.js
-
-npm install midnight.js
-```
-
 
 ## CDN Hosting
 
