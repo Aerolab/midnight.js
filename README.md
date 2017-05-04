@@ -126,6 +126,26 @@ $('nav').midnight({
 });
 ```
 
+
+## Running Multiple Instances with Different Breakpoints
+
+If you want to run multiple instances of midnight with different breakpoints, you can use the *sectionSelector* option to choose where each nav is going to be split.
+
+By default, the plugin will look for all the sections with the *data-midnight* attribute, which is the default, but you can change this to suit your needs. For example:
+
+```js
+$('nav.one').midnight({
+  // By default, sectionSelector is 'midnight'. It will switch only on elements that have the data-midnight attribute.
+  sectionSelector: 'midnight'
+});
+
+$('nav.two').midnight({
+  // We want this nav to switch only on elements that have the data-noon attribute.
+  sectionSelector: 'noon'
+});
+```
+
+
 ## CDN Hosting
 
 To lower hosting costs & have users load midnight.js faster, you can use the [jsDelivr CDN](http://www.jsdelivr.com/#!jquery.midnight) like so:
@@ -134,7 +154,7 @@ To lower hosting costs & have users load midnight.js faster, you can use the [js
 ```
 
 
-### Advanced
+### JSDelivr
 
 You can use jsDelivr's [version aliasing & concocting](https://github.com/jsdelivr/jsdelivr#version-aliasing) to serve the latest minor branch version along with dependancies.  For example, to download the latest patch versions of midnight.js v1.0.z together along with jQuery v1.11.z:
 ```htm

@@ -25,7 +25,9 @@
       // The class used by the default header (useful when adding multiple headers with different markup).
       defaultClass: 'default',
       // Unused: Add a prefix to the header classes (so if you set the "thingy-" prefix, a section with data-midnight="butterfly" will use the "thingy-butterfly" header)
-      classPrefix: ''
+      classPrefix: '',
+      // If you want to use plugin more than once or if you want a different data attribute name (so if you set the "header" in a section use data-header)
+      sectionSelector: 'midnight'
     },
 
     // Cache all the switchable headers (different colors)
@@ -53,7 +55,7 @@
       };
 
       // Sections that affect the color of the header (and cache)
-      this._$sections = $('[data-midnight]:not(:hidden)');
+      this._$sections = $('[data-'+ this.options.sectionSelector +']:not(:hidden)');
       this._sections = [];
 
       this._setupHeaders();
@@ -63,7 +65,7 @@
     },
 
     _create: function() {
-      
+
       var context = this;
       this._scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       this._documentHeight = $(document).height();
@@ -139,7 +141,7 @@
           // Disable the fixed height and trigger a reflow to get the proper height
           // Get the inner height or just the height of the container
           if( $inner.length ) {
-            // Overflow: Auto fixes an issue with Chrome 41, where outerHeight() no longer takes into account 
+            // Overflow: Auto fixes an issue with Chrome 41, where outerHeight() no longer takes into account
             // the margins of internal elements, creating a smaller container than necessary
             $inner.css('bottom', 'auto').css('overflow', 'auto');
             height = $inner.outerHeight();
@@ -165,18 +167,18 @@
       var context = this;
       this._headers[this.options['defaultClass']] = {};
 
-      this._$sections.each(function(){
-        var $section = $(this);
-        var headerClass = $section.data('midnight');
+      for( var i=0; i<this._$sections.length; i++ ) {
+        var $section = $(this._$sections[i]);
+        var headerClass = $section.data(this.options.sectionSelector);
 
-        if( typeof headerClass !== 'string' ){ return; }
+        if( typeof headerClass !== 'string' ){ continue; }
 
         headerClass = headerClass.trim();
 
-        if( headerClass === '' ){ return; }
+        if( headerClass === '' ){ continue; }
 
         context._headers[headerClass] = {};
-      });
+      }
 
 
       // Get the padding of the original Header. It will be applied to the internal headers.
@@ -281,7 +283,7 @@
         if( hasAnyClass ) {
           $header.show();
         } else {
-          $header.hide(); 
+          $header.hide();
         }
       });
 
@@ -439,7 +441,7 @@
 
     /**
      * Update the size of all the sections.
-     * This doesn't look for new sections. It only updates the ones that were around when the plugin was started. 
+     * This doesn't look for new sections. It only updates the ones that were around when the plugin was started.
      * Use .midnight('refresh') to do a full update.
      */
     _recalculateSections: function(){
@@ -454,7 +456,7 @@
 
         this._sections.push({
           element: $section,
-          className: $section.data('midnight'),
+          className: $section.data(this.options.sectionSelector),
           start: $section.offset().top,
           end: $section.offset().top + $section.outerHeight()
         });
