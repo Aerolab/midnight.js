@@ -310,6 +310,7 @@
       // Add support for transforms (for plugins like Headroom or general css stuff)
       if( typeof window.getComputedStyle === 'function' ) {
         var style = window.getComputedStyle(this.element[0], null);
+        var styleTop = style.top;
         var top = 0.0;
         var transformY = 0.0;
 
@@ -320,7 +321,10 @@
             transformY = parseFloat(transformArray[5]);
           }
         }
-        if( (style.top).indexOf('px') >= 0 && ! isNaN(parseFloat(style.top)) ) {
+        if ( style.top.indexOf('%') >= 0 && ! isNaN(parseFloat(styleTop)) ) {
+          // SAFARI ISSUE https://bugs.webkit.org/show_bug.cgi?id=29084
+          top = window.innerHeight * ( parseFloat(styleTop) / 100 );
+        } else if( (styleTop).indexOf('px') >= 0 && ! isNaN(parseFloat(styleTop)) ) {
           top = parseFloat(style.top);
         }
 
