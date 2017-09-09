@@ -150,15 +150,15 @@ $('nav.two').midnight({
 
 To lower hosting costs & have users load midnight.js faster, you can use the [jsDelivr CDN](http://www.jsdelivr.com/#!jquery.midnight) like so:
 ```htm
-<script src="//cdn.jsdelivr.net/jquery.midnight/{version}/midnight.jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/midnight.js@{version}/dist/midnight.jquery.min.js"></script>
 ```
 
 
 ### JSDelivr
 
-You can use jsDelivr's [version aliasing & concocting](https://github.com/jsdelivr/jsdelivr#version-aliasing) to serve the latest minor branch version along with dependancies.  For example, to download the latest patch versions of midnight.js v1.0.z together along with jQuery v1.11.z:
+You can use jsDelivr's [version aliasing & concocting](https://www.jsdelivr.com/features) to serve the latest minor branch version along with dependancies.  For example, to download the latest patch versions of midnight.js v1.0.z together along with jQuery v1.11.z:
 ```htm
-<script src="//cdn.jsdelivr.net/g/jquery@1.11,jquery.midnight@1.0"></script>
+<script src="https://cdn.jsdelivr.net/combine/npm/jquery@1.11,npm/midnight.js@1.1"></script>
 ```
 
 
