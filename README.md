@@ -122,7 +122,9 @@ $('nav').midnight({
   // The class that wraps the contents of each header. Also used as a clipping mask.
   innerClass: 'midnightInner',
   // The class used by the default header (useful when adding multiple headers with different markup).
-  defaultClass: 'default'
+  defaultClass: 'default',
+  // Define `Y` or `X` axis to use the effect horizontally or vertically
+  axis: 'Y'
 });
 ```
 
