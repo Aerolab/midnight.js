@@ -8,7 +8,7 @@ var pkg = require('./package.json');
 function buildFunction () {
     return gulp.src('./midnight.jquery.js', {sourcemaps: true})
     .pipe(uglify({output: {comments:'some'}}))
-    .pipe(header(fs.readFileSync('./midnight.header.txt', 'utf8'), { pkg : pkg } ))
+    .pipe(header(fs.readFileSync('./Copyright', 'utf8'), { pkg : pkg } ))
     .pipe(concat('midnight.jquery.min.js'))
     .pipe(gulp.dest('./'));
 }
