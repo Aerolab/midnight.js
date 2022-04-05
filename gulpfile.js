@@ -3,20 +3,18 @@ var gulp = require('gulp')
 , uglify = require("gulp-uglify")
 , concat = require("gulp-concat")
 , header = require("gulp-header");
- 
-var getVersion = function () {
-    info = require("./package.json");
-    return info.version;
-};
-var getCopyright = function () {
-    return fs.readFileSync('Copyright');
-};
+var pkg = require('./package.json');
 
-gulp.task('build', function () {
-    gulp.src('./midnight.jquery.js')
-    .pipe(uglify({preserveComments:'some'}))
+function buildFunction () {
+    return gulp.src('./midnight.jquery.js', {sourcemaps: true})
+    .pipe(uglify({output: {comments:'some'}}))
+    .pipe(header(fs.readFileSync('./Copyright', 'utf8'), { pkg : pkg } ))
     .pipe(concat('midnight.jquery.min.js'))
     .pipe(gulp.dest('./'));
-});
+}
 
-gulp.task('default', ['build']);
+var build = gulp.series(buildFunction);
+
+exports.build = build;
+
+exports.default = build;
