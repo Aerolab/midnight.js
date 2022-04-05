@@ -28,7 +28,7 @@
        classPrefix: '',
        // If you want to use plugin more than once or if you want a different data attribute name (so if you set the "header" in a section use data-header)
        sectionSelector: 'midnight',
-       // Define `Y` or `X` axis to use the effect horizontally or vertically
+       // Define `Y` or `X` axis to use the effect vertically(Y) or horizontally(X)
        axis: 'Y'
      },
  

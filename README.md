@@ -123,7 +123,7 @@ $('nav').midnight({
   innerClass: 'midnightInner',
   // The class used by the default header (useful when adding multiple headers with different markup).
   defaultClass: 'default',
-  // Define `Y` or `X` axis to use the effect horizontally or vertically
+  // Define `Y` or `X` axis to use the effect vertically(Y) or horizontally(X)
   axis: 'Y'
 });
 ```
